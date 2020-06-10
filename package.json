@@ -11,17 +11,28 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:multi-line-merge.helloWorld"
+		"onCommand:multi-line-merge.helloWorld",
+		"onLanguage:javascript"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "multi-line-merge.helloWorld",
-				"title": "Hello World"
+				"command": "multi-line-merge.multiLineMerge",
+				"title": "合并选择区域为一行显示",
+				"category": ""
 			}
-		]
+		],
+		"keybindings": [{
+			"command": "multi-line-merge.multiLineMerge",
+			"key":"alt+shift+m",
+			"mac":"cmd+shift+1"
+		}]
 	},
+	"repository": {
+        "type": "git",
+        "url": "https://github.com/wisenchen/multi-line-merge.git"
+    },
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",
@@ -30,6 +41,9 @@
 		"pretest": "npm run compile && npm run lint",
 		"test": "node ./out/test/runTest.js"
 	},
+	"capabilities" : {
+        "documentFormattingProvider" : "true"
+    },
 	"devDependencies": {
 		"@types/vscode": "^1.45.0",
 		"@types/glob": "^7.1.1",
